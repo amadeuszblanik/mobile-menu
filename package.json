@@ -1,0 +1,14 @@
+{
+  "name": "meSass",
+  "version": "1.0.0",
+  "description": "meSass - SASS Framework",
+  "main": "index.js",
+  "author": "Amadeusz Blanik <amadeusz@blanik.me>",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2",
+    "normalize-scss": "^7.0.1"
+  }
+}

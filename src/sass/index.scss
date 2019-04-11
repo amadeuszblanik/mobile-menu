@@ -1,0 +1,22 @@
+/*!
+  Project name: mobile-menu
+  Author: Amadeusz Blanik
+  
+  Gir repo: https://github.com/amadeuszblanik/mobile-menu.git
+  Codepen: https://codepen.io/amadeuszblanik/pen/xedNJQ
+
+  &copy; 2019
+*/
+
+@warn "meSass() :: Start…";
+
+@import "../../node_modules/normalize-scss/sass/normalize";
+
+@import "config/all";
+@import "function/all";
+@import "mixins/all";
+
+@import "components/all";
+@import "layouts/all";
+
+@warn "meSass() :: Successfully compiled…";

@@ -1,0 +1,11 @@
+@mixin meBlurBackground ($value) {
+  @supports (backdrop-filter: blur($value)) {
+    backdrop-filter: blur($value);
+    @content;
+  }
+
+  @supports (-webkit-backdrop-filter: blur($value)) {
+    -webkit-backdrop-filter: blur($value);
+    @content;
+  }
+}

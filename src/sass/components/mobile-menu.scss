@@ -1,0 +1,103 @@
+.app_navbar {
+  $topbar-height: 72px;
+  $item-length: 4;
+  $item-delay: 150ms;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @include meFlex;
+  width: 100%;
+  height: $topbar-height;
+
+  background: meColor(dark);
+  @include meBlurBackground(5px) {
+    background: meColor(dark, 0.92);
+  }
+
+  & > .navbar-nav {
+    position: absolute;
+    top: $topbar-height;
+    left: 0;
+
+    @include meFlex(top, left, column);
+    width: 100%;
+    max-height: 0px;
+    height: 0px;
+
+    background: lighten(meColor(dark), 5%);
+    @include meBlurBackground(0px) {
+      background: meColor(dark, 0.88);
+    }
+    transition-delay: $item-delay * $item-length;
+
+    @include meMotion((max-height, height));
+    overflow: hidden;
+
+    & > .nav {
+      @include meResetList;
+      @include meWidthMax(100%);
+      margin: 16px;
+      .nav-item {
+        max-height: 0px;
+        padding: 10px 4px 8px;
+
+        transform: scale(0.8);
+        opacity: 0;
+
+        @include meMotion((max-height, opacity, transform));
+
+        @for $index from 0 through $item-length {
+          &:nth-child(#{$item-length - $index}) {
+            transition-delay: $item-delay * $index;
+          }
+        }
+        &:not(:last-child) {
+          border-bottom: 1px solid meColor(light, 0.3);
+        }
+
+        .nav-link {
+          display: block;
+          padding: 8px 0;
+          @include meLink(meColor(light), none, meColor(light), none);
+        }
+      }
+    }
+  }
+
+  &.isExpanded {
+
+    & > .navbar-nav {
+      max-height: calc(100vh - #{$topbar-height});
+      height: calc(100vh - #{$topbar-height});
+
+      transition-delay: 0ms;
+
+      & > .nav {
+        .nav-item {
+          max-height: 64px;
+          transform: scale(1);
+          opacity: 1;
+
+          @for $index from 0 through $item-length {
+            &:nth-child(#{$index}) {
+              transition-delay: $item-delay * $index;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include meBreakpoint(md) {
+    & > .navbar-nav {
+      @include meBlurBackground(5px) {
+        background: meColor(dark, 0.88);
+      }
+      & > .nav {
+        margin: 24px;
+      }
+    }
+  }
+}
